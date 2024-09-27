@@ -1,0 +1,16 @@
+services:
+  server:
+    image: tcppow/server
+    build:
+      context: .
+      dockerfile: ./deploy/server/Dockerfile
+    ports:
+      - 8080:8080
+  client:
+    image: tcppow/client
+    build:
+      context: .
+      dockerfile: ./deploy/client/Dockerfile
+    deploy:
+      mode: replicated
+      replicas: 5
